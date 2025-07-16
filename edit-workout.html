@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Workout - Fitness Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>Edit Workout Plan</h2>
+    <form id="edit-workout-form">
+      <label for="edit-plan-name">Plan Name</label>
+      <input type="text" id="edit-plan-name" required />
+
+      <div id="edit-exercise-list">
+        <!-- Existing exercises will appear here -->
+      </div>
+
+      <label>Add/Edit Exercises</label>
+      <input type="text" id="new-exercise-name" placeholder="Exercise name" />
+      <input type="number" id="new-exercise-sets" placeholder="Sets" />
+      <input type="number" id="new-exercise-reps" placeholder="Reps" />
+      <button type="button" onclick="addNewEditExercise()">➕ Add Exercise</button>
+
+      <label for="edit-notes">Notes</label>
+      <textarea id="edit-notes" placeholder="Optional notes..."></textarea>
+
+      <button type="submit">💾 Save Changes</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    loadWorkoutForEditing();
+  </script>
+</body>
+</html>

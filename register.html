@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Fitness Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+  <div class="login-container">
+    <h2>Create Account</h2>
+    <form class="login-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Create a password" required />
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" placeholder="Confirm password" required />
+
+      <button type="submit">Register</button>
+      <p class="register-link">Already have an account? <a href="login.html">Login</a></p>
+    </form>
+  </div>
+  <script src="script.js"></script>
+<script>
+  document.querySelector('.login-form').addEventListener('submit', registerUser);
+</script>
+
+</body>
+</html>

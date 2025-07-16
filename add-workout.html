@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Workout - Fitness Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>Add Workout Plan</h2>
+    <form id="workout-form" onsubmit="saveWorkoutPlan(event)">
+      <label for="plan-name">Plan Name (e.g. Push Day)</label>
+      <input type="text" id="plan-name" required />
+
+      <div id="exercise-fields">
+        <label>Exercise</label>
+        <div class="exercise-group">
+          <input type="text" id="exercise-name" placeholder="Exercise name" />
+          <input type="number" id="exercise-sets" placeholder="Sets" />
+          <input type="number" id="exercise-reps" placeholder="Reps" />
+          <button type="button" onclick="addExercise()">➕ Add Exercise</button>
+        </div>
+      </div>
+
+      <h4>Exercises Added:</h4>
+      <ul id="exercise-list"></ul>
+
+      <label for="notes">Notes</label>
+      <textarea id="notes" placeholder="Optional notes..."></textarea>
+
+      <button type="submit">✅ Save Workout</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

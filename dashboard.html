@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Fitness Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 🔥 Navigation bar added here -->
+  <header class="top-navbar">
+    <div class="nav-left">
+      <h3 class="shimmer-text">Fitness Tracker</h3>
+
+    </div>
+    <div class="nav-right">
+      <button onclick="goToDashboard()">🏠 Dashboard</button>  
+      <button onclick="logout()">🚪 Logout</button>
+    </div>
+  </header>
+
+  <!-- Your existing container below -->
+  <div class="login-container">
+    <h2>Your Workout Plans</h2>
+    <div id="workout-list"></div>
+    <button onclick="window.location.href='add-workout.html'">+ Add New Workout</button>
+  </div>
+
+  <script>
+    const workoutList = document.getElementById("workout-list");
+    let workouts = JSON.parse(localStorage.getItem("fitnessWorkouts")) || [];
+
+    if (workouts.length === 0) {
+      workoutList.innerHTML = "<p>No workouts added yet.</p>";
+    } else {
+      workouts.forEach((workout) => {
+        const div = document.createElement("div");
+        div.classList.add("workout-card");
+
+        const exerciseList = workout.exercises.map(ex => `
+          <li>${ex.name} — ${ex.sets} sets x ${ex.reps} reps</li>
+        `).join("");
+
+        div.innerHTML = `
+          <h3>${workout.planName}</h3>
+          <ul>${exerciseList}</ul>
+          <p><strong>Notes:</strong> ${workout.notes || '—'}</p>
+          <small><strong>Date:</strong> ${workout.date}</small>
+          <br>
+          <button onclick="deleteWorkout(${workout.id})">🗑️ Delete</button>
+          <button onclick="editWorkout(${workout.id})">✏️ Edit</button>
+        `;
+
+        workoutList.appendChild(div);
+      });
+    }
+
+    function deleteWorkout(id) {
+      workouts = workouts.filter(workout => workout.id !== id);
+      localStorage.setItem("fitnessWorkouts", JSON.stringify(workouts));
+      location.reload();
+    }
+
+    function editWorkout(id) {
+      localStorage.setItem("editWorkoutId", id);
+      window.location.href = "edit-workout.html";
+    }
+
+    // 🔁 Navbar Functions
+    function goToDashboard() {
+      window.location.href = "dashboard.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("fitnessUser");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+
+</html>
